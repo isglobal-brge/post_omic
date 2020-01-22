@@ -23,9 +23,13 @@ knitr::opts_chunk$set(cache=TRUE, fig.align = TRUE,
                       message = FALSE, comment = "")
 ```
 
-# Global overview of the course
+# Gettig started
+This document can be reproduced by using the R code and the  data (for illustrating purposes and for the excersises) that are available here: https://github.com/isglobal-brge/post_omic
 
-It is assumed that attendees are familiar with omic association analyses (GWAS, gene expression, methylation, RNA-seq, ...). This course aims to illustrate how to provide biological insights of those significant features obtained in these association studies (SNPs, genes, CpGs, genomic regions, ...). We will start by providing a global overview about Bioconductor, some of the infrastructures used to encapsulate omic data and the use of `GenomicRanges` which helps to manipulate genomic annotations when analyzing high-throughput sequencing data. Session 2 illustrates how to visualize significant results (circos plots and genomic tracks) along with information from omic annotations (ENCODE, GTEx, GWAS catalog, ...). Finally, Session 3 will show how to assess whether our hits are significantly enriched in those annotated databases.
+
+# Global description
+
+It is assumed that people who read this material are familiar with omic association analyses (GWAS, gene expression, methylation, RNA-seq, ...). There are two other files illustrating how to provide biological insights of those significant features obtained in these association studies (SNPs, genes, CpGs, genomic regions, ...). Here (Session 1) we provide a global overview about Bioconductor, some of the infrastructures used to encapsulate omic data and the use of `GenomicRanges` which helps to manipulate genomic annotations when analyzing high-throughput sequencing data. Session 2 illustrates how to visualize significant results (circos plots and genomic tracks) along with information from omic annotations (ENCODE, GTEx, GWAS catalog, ...). Finally, Session 3 will show how to assess whether our hits are significantly enriched in those annotated databases.
 
 We do not aim to give a global overview of existing Bioconductor packages to perform visualization, annotations or enrichment analyses since they are very well detailed in their related vignettes. Our goal is to provide the main details to reproduce real analyses that appear in most of the papers which analyze omic data.
 

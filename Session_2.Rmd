@@ -23,6 +23,10 @@ knitr::opts_chunk$set(cache=TRUE, fig.align = TRUE,
                       message = FALSE, comment = "")
 ```
 
+# Gettig started
+This document can be reproduced by using the R code and the  data (for illustrating purposes and for the excersises) that are available here: https://github.com/isglobal-brge/post_omic
+
+
 # Introduction
 
 Omic data analyses normally assess whether a given feature (SNP, transcript, gene, CpG, CNV, ...) is associated with a given trait (disease, bmi, heigth, ..). They do not test a mechanistic hypothesis but discovers plausible biological associations that can guide into the mechanisms. The search for plausible mechanisms can be helped with the knowledge of whether a statistically significant feature is within a protein-coding gene, intergenic, or close to a regulatory element (e.g., a methylation mark) in tissues or cell types that are relevant to the trait. 
@@ -43,7 +47,7 @@ The CpG islands are the basis for all CpG annotations when performing epigenomic
 
 ## Genic Annotations
 
-Genic annotations include 1-5Kb upstream of the TSS, the promoter (< 1Kb upstream of the TSS - Transcriptional Start Site), 5’UTR, first exons, exons, introns, CDS, 3’UTR, and intergenic regions (the intergenic regions exclude the previous list of annotations). In Bioconductor, the genic annotations are determined by functions from `GenomicFeatures` and data from the `TxDb.*` and `org.*.eg.db` packages.
+Genic annotations include 1-5Kb upstream of the TSS, the promoter (< 1Kb upstream of the TSS - Transcriptional Start Site), 5?UTR, first exons, exons, introns, CDS, 3?UTR, and intergenic regions (the intergenic regions exclude the previous list of annotations). In Bioconductor, the genic annotations are determined by functions from `GenomicFeatures` and data from the `TxDb.*` and `org.*.eg.db` packages.
 
 ![Geneic Annotations](figures/genic_annot.jpg)
 
@@ -64,7 +68,7 @@ Genic annotations include 1-5Kb upstream of the TSS, the promoter (< 1Kb upstrea
 - Some of those data are very simple annotations like CpG island locations or SNP locations. 
 - Others are more complicated gene models, or even numeric annotations like conservation information. 
 - In order to provide a unified interface to all this information, the Gviz package defines a meta-constructor function UcscTrack. 
-- The idea here is that we can express all of the available UCSC data in one of the package’s track types.
+- The idea here is that we can express all of the available UCSC data in one of the package?s track types.
 - We can use the functionality provided in the `rtracklayer` package to connect to UCSC and to download the relevant information. 
 
 To start we first need to know about the available data in the UCSC data base and about their structure. A good way to do this is to use the table browser on the [UCSC web site](http://genome.ucsc.edu/cgi-bin/hgTables?command=start). This shows the table structure for the first gene model track, the known UCSC genes, in the table browser:
@@ -147,7 +151,7 @@ snpLocations <-  UcscTrack(genome="mm9", chromosome="chrX",
 ```
 
 
-Then, most of UCSC’s data can be encapsulated as `DataTrack` class. For instance, the conservation information and GC-content can be annotated using:
+Then, most of UCSC?s data can be encapsulated as `DataTrack` class. For instance, the conservation information and GC-content can be annotated using:
 
 ```{r annot_conservation_CpG}
 conservation <- UcscTrack(genome="mm9", chromosome="chrX",
@@ -259,7 +263,7 @@ For instance, several studies are interested in annotating cromatine marks:
 
 This is a real example:
 
-![Example (Bonàs-Guarch, et al. Nat Comm, 2018)](figures/example_marks.png)
+![Example (Bon?s-Guarch, et al. Nat Comm, 2018)](figures/example_marks.png)
 
 
 This code illustrate how to obtain, for instance, annotation Layered H3K27Ac

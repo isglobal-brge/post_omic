@@ -1,5 +1,5 @@
 ---
-title: "Bioconductor infrastructures and annotation"
+title: "Bioconductor infrastructures"
 author: 
   - name: Juan R Gonzalez
     affiliation: 

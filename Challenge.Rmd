@@ -1,0 +1,79 @@
+---
+title: "Challenge"
+author: "Sergio Aguilar Fernandez"
+date: "1/28/2020"
+output: html_document
+---
+
+```{r}
+library(Biobase)
+library(biovizBase)
+library(SummarizedExperiment)
+load("data_exercises/breast_tcga.Rdata")
+breast
+
+data <- colData(breast)
+table(breast$er)
+
+geneExpr <- assays(breast)$counts
+dim(geneExpr)
+
+boxplot(geneExpr[1,] ~ breast$er)
+
+
+roi <- GRanges(seqnames="chr6", IRanges(start=151.2e6,
+                                 end=151.8e6))
+roi
+breast.roi <- subsetByOverlaps(breast, roi)
+breast.roi
+assay(breast.roi)
+rowRanges(breast.roi)
+```
+
+```{r}
+geneExpr.roi <- assays(breast.roi)$counts
+class(breast.roi) 
+```
+As can be seen, geneExpr.roi is a "SummarizedExperiment" (depending on the class object, the methods for the ggplot change). In this case, the methods needed are: 
+ggplot(data, mapping = aes(),
+                        assay.id = 1L, ..., environment = parent.frame())
+                        
+In case we would want to plot a "matrix" object we would have needed: 
+ggplot(data, mapping = aes(), ...,
+                        environment = parent.frame())
+      
+```{r fig.width=15}
+library(ggplot2)
+df <- mold(breast.roi)
+dim(df)
+ggplot(df, mapping = aes(x=er, y=value, group=er),
+                        assay.id = 1L, environment = parent.frame()) + 
+  geom_boxplot(aes(fill=er)) + 
+  facet_grid(. ~ rownames, scales='free')  +
+    theme(strip.text.x = element_text(size=12,
+                                      face="bold.italic"),
+          strip.text.y = element_text(size=12,
+                                      face="bold.italic"))
+
+```
+
+
+
+New solution
+
+```{r}
+library(tidyr)
+library(ggplot2)
+geneExpr.roi <- assays(breast.roi)$counts
+xx <- data.frame(t(geneExpr.roi), er=breast.roi$er)
+ee <- gather(xx, key=gene, value=counts, -er)
+
+bp <- ggplot(ee, aes(x=er, y=counts)) + 
+  geom_boxplot(aes(fill=er))
+bp + facet_wrap(. ~ gene,  scales='free')
+
+
+```
+
+
+
